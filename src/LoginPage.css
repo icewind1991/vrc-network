@@ -1,0 +1,17 @@
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+}
+
+#loginForm input {
+    font-size: 32px;
+}
+
+#loginForm input[type="submit"] {
+    border: 1px solid #eee;
+}

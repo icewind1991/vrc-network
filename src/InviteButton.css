@@ -1,0 +1,71 @@
+.inviteButtonHolder {
+    width: 300px;
+    height: 32px;
+    display: inline-block;
+}
+
+.inviteButton {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.inviteButton .buttons {
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+}
+
+.inviteButton button {
+    background: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+.inviteButton button:hover {
+    background: #f8f8f8;
+}
+
+.inviteButton .buttons button {
+    height: 32px;
+    flex: 1 0;
+    border: 1px solid #aaa;
+}
+
+.inviteButton .buttons button:last-child {
+    border-left: none;
+    width: 42px;
+    flex: 0 1;
+}
+
+.inviteButton .dropdown {
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+
+.inviteButton .dropdown, .inviteButton .dropdown div {
+    display: flex;
+    flex-direction: column;
+}
+
+.inviteButton .dropdown input {
+    font-size: 20px;
+    color: black;
+    background: #fff;
+    padding-left: 5px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #aaa;
+}
+
+.inviteButton .dropdown button {
+    text-align: left;
+    padding: 5px 5px;
+    height: 24px;
+    border-bottom: 1px solid #aaa;
+}
+
+.inviteButton .dropdown button:last-child {
+    margin-bottom: 0;
+}
