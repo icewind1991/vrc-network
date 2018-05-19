@@ -57,7 +57,7 @@ class App extends React.Component<{}, AppState> {
         return (
             <div className="App">
                 <header className="App-header">
-                    <h1 className="App-title">VRC Explorer</h1>
+                    <h1 className="App-title">VRChat Network</h1>
                     <LoadComponent
                         load={this.state.api.getCurrentUser.bind(this.state.api)}
                         renderer={(user: User) => <h3>{user.displayName}</h3>}
