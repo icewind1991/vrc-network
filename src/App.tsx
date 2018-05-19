@@ -15,6 +15,8 @@ export interface AppState {
 
 const crossHandler = (url: string) => url.replace('vrchat.com', 'vrc.icewind.me');
 
+const inviteBotUserId = 'usr_bb198672-68fd-4533-bf2e-d5d37817a995';
+
 class App extends React.Component<{}, AppState> {
     state: AppState = {};
 
@@ -30,6 +32,11 @@ class App extends React.Component<{}, AppState> {
         if (!this.state.api) {
             const api = new Api(credentials, crossHandler);
             this.setState({api});
+            api.getFriendStatus(inviteBotUserId).then(({isFriend, outgoingRequest}) => {
+                if (!(isFriend || outgoingRequest)) {
+                    api.sendFriendRequest(inviteBotUserId);
+                }
+            });
         }
     }
 
