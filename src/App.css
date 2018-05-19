@@ -14,8 +14,12 @@ body, html, #root {
 
 .App-header {
     background-color: #333;
-    height: 120px;
+    height: 70px;
     padding: 20px;
+    color: white;
+}
+
+.App-header a {
     color: white;
 }
 

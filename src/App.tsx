@@ -1,13 +1,12 @@
 import * as React from 'react';
 import './App.css';
 import { Api, Credentials } from 'vrcapi/build/Api';
-import { InstanceId, User } from 'vrcapi/build/Data';
+import { InstanceId } from 'vrcapi/build/Data';
 import { LoginPage } from './LoginPage';
 import { FriendsPage } from './FriendsPage';
 import { Route } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import { InstancePage } from './InstancePage';
-import { LoadComponent } from './LoadComponent';
 
 export interface AppState {
     api?: Api;
@@ -56,15 +55,11 @@ class App extends React.Component<{}, AppState> {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">VRChat Network</h1>
-                    <LoadComponent
-                        load={this.state.api.getCurrentUser.bind(this.state.api)}
-                        renderer={(user: User) => <h3>{user.displayName}</h3>}
-                    />
-                </header>
                 <BrowserRouter>
                     <div>
+                        <header className="App-header">
+                            <h1 className="App-title"><Link to="/">VRChat Network</Link></h1>
+                        </header>
                         <Route
                             exact={true}
                             path="/"

@@ -44,6 +44,11 @@
     border-right: 1px solid #aaa;
 }
 
+.inviteButton .dropdown > div {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
 .inviteButton .dropdown, .inviteButton .dropdown div {
     display: flex;
     flex-direction: column;
@@ -63,7 +68,9 @@
     text-align: left;
     padding: 5px 5px;
     height: 24px;
+    display: inline-block;
     border-bottom: 1px solid #aaa;
+    flex: 1 0;
 }
 
 .inviteButton .dropdown button:last-child {
