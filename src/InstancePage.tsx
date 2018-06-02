@@ -14,8 +14,8 @@ export function InstancePage({api, instanceId}: { api: Api, instanceId: Instance
         <LoadComponent
             reloadHook={reloadHook}
             load={api.getInstanceById.bind(api, instanceId)}
-            renderer={(instance: Instance) => (<span>
-                <button className="reload" onClick={reloadHook.trigger}>⟳</button>
+            renderer={(instance: Instance, loading) => (<span>
+                <button className={`reload ${loading ? 'loading' : ''}`} onClick={reloadHook.trigger}/>
                 <InviteButton api={api} instance={instanceId}/>
                 <UserList api={api} users={instance.users}/>
             </span>)}

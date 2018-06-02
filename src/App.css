@@ -7,16 +7,17 @@ body, html, #root {
     text-align: center;
 }
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
+div.content {
+    padding-top: 50px;
 }
 
 .App-header {
     background-color: #333;
-    height: 70px;
-    padding: 20px;
+    height: 35px;
+    padding: 5px;
     color: white;
+    position: fixed;
+    width: 100%;
 }
 
 .App-header a {
@@ -25,13 +26,14 @@ body, html, #root {
 
 .App-title {
     font-size: 1.5em;
+    margin: 0;
 }
 
 .App-intro {
     font-size: large;
 }
 
-@keyframes App-logo-spin {
+@keyframes spin {
     from {
         transform: rotate(0deg);
     }
@@ -54,11 +56,22 @@ input[type="submit"] {
 
 button.reload {
     background: transparent;
-    font-size: 42px;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="white" d="M956.9 125.5l-71.7 71.7c-39.2-49.8-88-91.9-143.2-123.3C668.6 32.1 584.9 10 500 10c-66.1 0-130.3 13-190.8 38.5-58.4 24.7-110.8 60-155.7 105-45 45-80.3 97.4-105 155.7C23 369.7 10 433.9 10 500c0 66.1 13 130.3 38.5 190.8 24.7 58.4 60 110.8 105 155.7 45 45 97.4 80.3 155.7 105C369.7 977 433.9 990 500 990c87.6 0 173.6-23.4 248.7-67.7 72.8-43 133.6-104.4 175.9-177.6 19.3-33.5 7.9-76.3-25.6-95.6-33.5-19.3-76.3-7.9-95.6 25.6-30.2 52.4-73.7 96.3-125.8 127C624 833.3 562.6 850 500 850c-93.5 0-181.4-36.4-247.5-102.5S150 593.5 150 500s36.4-181.4 102.5-247.5S406.5 150 500 150c60.7 0 120.5 15.8 172.8 45.6 44.3 25.2 82.9 60.1 112.5 101.6L685.5 397c-18.3 18.3-12.1 33.1 13.7 33.1H955c19.4 0 35-15.7 35-35.1V139.2c0-25.8-14.8-31.9-33.1-13.7z"/></svg>');
+    background-size: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
     position: fixed;
-    top: 60px;
+    top: 5px;
     left: 5px;
     color: white;
     outline: none;
     border: none;
+    cursor: pointer;
+}
+
+button.reload.loading {
+    animation:spin 1s linear infinite;
 }

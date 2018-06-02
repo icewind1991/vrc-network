@@ -13,8 +13,8 @@ export function FriendsPage({api}: { api: Api }) {
         <LoadComponent
             reloadHook={reloadHook}
             load={api.getFriends.bind(api)}
-            renderer={(friends: User[]) => <div>
-                <button className="reload" onClick={reloadHook.trigger}>⟳</button>
+            renderer={(friends: User[], loading) => <div>
+                <button className={`reload ${loading ? 'loading' : ''}`} onClick={reloadHook.trigger}/>
                 <UserList api={api} users={friends}/>
             </div>}
         />

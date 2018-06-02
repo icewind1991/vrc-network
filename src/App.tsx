@@ -60,16 +60,18 @@ class App extends React.Component<{}, AppState> {
                         <header className="App-header">
                             <h1 className="App-title"><Link to="/">VRChat Network</Link></h1>
                         </header>
-                        <Route
-                            exact={true}
-                            path="/"
-                            component={() => <FriendsPage api={api}/>}
-                        />
-                        <Route
-                            path="/instance/:world/:instance"
-                            component={({match}: { match: { params: InstanceId } }) =>
-                                <InstancePage api={api} instanceId={match.params}/>}
-                        />
+                        <div className="content">
+                            <Route
+                                exact={true}
+                                path="/"
+                                component={() => <FriendsPage api={api}/>}
+                            />
+                            <Route
+                                path="/instance/:world/:instance"
+                                component={({match}: { match: { params: InstanceId } }) =>
+                                    <InstancePage api={api} instanceId={match.params}/>}
+                            />
+                        </div>
                     </div>
                 </BrowserRouter>
             </div>

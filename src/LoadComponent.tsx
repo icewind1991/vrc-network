@@ -3,17 +3,20 @@ import { Hook } from './Hook';
 
 export interface ApiLoadComponentProps<T> {
     load: () => Promise<T>;
-    renderer: (result: T) => React.ReactNode;
+    renderer: (result: T, loading: boolean) => React.ReactNode;
     placeholder?: React.ReactNode;
     reloadHook?: Hook;
 }
 
 export interface ApiLoadComponentState<T> {
     result?: T;
+    loading: boolean;
 }
 
 export class LoadComponent<T> extends React.Component<ApiLoadComponentProps<T>, ApiLoadComponentState<T>> {
-    state: ApiLoadComponentState<T> = {};
+    state: ApiLoadComponentState<T> = {
+        loading: false
+    };
 
     componentDidMount() {
         if (!this.state.result) {
@@ -34,12 +37,13 @@ export class LoadComponent<T> extends React.Component<ApiLoadComponentProps<T>, 
     }
 
     load = () => {
-        this.props.load().then(result => this.setState({result}));
+        this.setState({loading: true});
+        this.props.load().then(result => this.setState({result, loading: false}));
     }
 
     render() {
         if (this.state.result) {
-            return this.props.renderer(this.state.result);
+            return this.props.renderer(this.state.result, this.state.loading);
         } else {
             return this.props.placeholder || [];
         }
