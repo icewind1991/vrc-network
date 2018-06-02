@@ -1,0 +1,29 @@
+.dropdown-container {
+    overflow-y: visible;
+    width: 200px;
+    position: relative;
+    display: block;
+    user-select: none;
+}
+
+.dropdown-container > span:first-child {
+    text-align: right;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-container .dropdown {
+    position: fixed;
+    right: 0;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    background: #333;
+    width: 200px;
+}
+
+.dropdown-container .dropdown a {
+    display: block;
+    padding: 5px;
+    text-align: left;
+}

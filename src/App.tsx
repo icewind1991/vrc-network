@@ -7,6 +7,9 @@ import { FriendsPage } from './FriendsPage';
 import { Route } from 'react-router';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { InstancePage } from './InstancePage';
+import { CurrentUser } from './CurrentUser';
+import { BlockListPage } from './BlockListPage';
+import { UserPage } from './UserPage';
 
 export interface AppState {
     api?: Api;
@@ -22,7 +25,6 @@ class App extends React.Component<{}, AppState> {
     componentDidMount() {
         const credentials = sessionStorage.getItem('credentials');
         if (credentials) {
-            console.log(JSON.parse(credentials));
             this.onCredentials(JSON.parse(credentials));
         }
     }
@@ -37,6 +39,11 @@ class App extends React.Component<{}, AppState> {
                 }
             });
         }
+    }
+
+    logout = () => {
+        sessionStorage.removeItem('credentials');
+        this.setState({api: undefined});
     }
 
     render() {
@@ -59,6 +66,7 @@ class App extends React.Component<{}, AppState> {
                     <div>
                         <header className="App-header">
                             <h1 className="App-title"><Link to="/">VRChat Network</Link></h1>
+                            <CurrentUser api={this.state.api} logout={this.logout}/>
                         </header>
                         <div className="content">
                             <Route
@@ -70,6 +78,15 @@ class App extends React.Component<{}, AppState> {
                                 path="/instance/:world/:instance"
                                 component={({match}: { match: { params: InstanceId } }) =>
                                     <InstancePage api={api} instanceId={match.params}/>}
+                            />
+                            <Route
+                                path="/blocked"
+                                component={() => <BlockListPage api={api}/>}
+                            />
+                            <Route
+                                path="/users/:userId"
+                                component={({match}: { match: { params: { userId: string } } }) =>
+                                    <UserPage api={api} userId={match.params.userId}/>}
                             />
                         </div>
                     </div>

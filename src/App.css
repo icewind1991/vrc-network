@@ -75,3 +75,9 @@ button.reload {
 button.reload.loading {
     animation:spin 1s linear infinite;
 }
+
+div.currentUser {
+    position: absolute;
+    right: 22px;
+    top: 13px;
+}
