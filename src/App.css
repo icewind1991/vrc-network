@@ -54,6 +54,17 @@ input[type="submit"] {
     min-width: 200px;
 }
 
+button {
+    background: white;
+    border: 1px solid #aaa;
+    outline: none;
+    padding: 7.5px;
+}
+
+button:hover {
+    background: #f8f8f8;
+}
+
 button.reload {
     background: transparent;
     display: block;
@@ -73,7 +84,7 @@ button.reload {
 }
 
 button.reload.loading {
-    animation:spin 1s linear infinite;
+    animation: spin 1s linear infinite;
 }
 
 div.currentUser {

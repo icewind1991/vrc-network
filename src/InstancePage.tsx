@@ -6,6 +6,7 @@ import * as React from 'react';
 import { UserList } from './UserList';
 import { InviteButton } from './InviteButton';
 import { createHook } from './Hook';
+import { FavoriteButton } from './FavoriteButton';
 
 export function InstancePage({api, instanceId}: { api: Api, instanceId: InstanceId }) {
     const reloadHook = createHook();
@@ -17,6 +18,7 @@ export function InstancePage({api, instanceId}: { api: Api, instanceId: Instance
             renderer={(instance: Instance, loading) => (<span>
                 <button className={`reload ${loading ? 'loading' : ''}`} onClick={reloadHook.trigger}/>
                 <InviteButton api={api} instance={instanceId}/>
+                <FavoriteButton api={api} worldId={instanceId.world}/>
                 <UserList api={api} users={instance.users}/>
             </span>)}
         />
