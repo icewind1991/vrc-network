@@ -15,3 +15,8 @@
 #loginForm input[type="submit"] {
     border: 1px solid #eee;
 }
+
+p.error {
+    color: #ff8888;
+    font-size: 20px;
+}

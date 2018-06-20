@@ -5,6 +5,7 @@ import { FormEvent } from 'react';
 
 export interface LoginPageProps {
     onCredentials: (credentials: Credentials) => void;
+    error?: string;
 }
 
 function onSubmit(onCredentials: (credentials: Credentials) => void, event: FormEvent<HTMLFormElement>) {
@@ -16,9 +17,12 @@ function onSubmit(onCredentials: (credentials: Credentials) => void, event: Form
     }
 }
 
-export function LoginPage({onCredentials}: LoginPageProps) {
+export function LoginPage({onCredentials, error}: LoginPageProps) {
     return (
         <form id="loginForm" onSubmit={onSubmit.bind(null, onCredentials)} target="#">
+            {error ? <p className="error">
+                {error}
+            </p> : []}
             <p>
                 <input name="username" type="text" placeholder="Username"/>
             </p>

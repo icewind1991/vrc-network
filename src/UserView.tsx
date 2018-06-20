@@ -3,6 +3,7 @@ import { User } from 'vrcapi/build/Data';
 import './UserView.css';
 import { InstanceInfo } from './InstanceInfo';
 import { Api } from 'vrcapi/build/Api';
+import { Link } from 'react-router-dom';
 
 export function UserView({user, api}: { user: User, api: Api }) {
     return (
@@ -13,7 +14,9 @@ export function UserView({user, api}: { user: User, api: Api }) {
                     <img src={user.avatar.thumbnail}/>
                 </td>
                 <td>
-                    {user.displayName}
+                    <Link to={`users/${user.id}`}>
+                        {user.displayName}
+                    </Link>
                 </td>
             </tr>
             <tr>

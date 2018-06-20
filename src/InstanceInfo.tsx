@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 
 export function InstanceInfo({instanceId, api}: { instanceId: InstanceId | null, api: Api }) {
     if (instanceId) {
+        if (instanceId.world === 'offline') {
+            return <span>Offline</span>;
+        }
         return (
             <span>
                 <Link to={`/instance/${instanceId.world}/${instanceId.instance}`}>

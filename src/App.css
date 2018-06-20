@@ -54,7 +54,7 @@ input[type="submit"] {
     min-width: 200px;
 }
 
-button {
+button, input[type="submit"] {
     background: white;
     border: 1px solid #aaa;
     outline: none;

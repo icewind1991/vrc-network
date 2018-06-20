@@ -14,6 +14,7 @@ import { FavoritesPage } from './FavoritesPage';
 
 export interface AppState {
     api?: Api;
+    error?: string;
 }
 
 const crossHandler = (url: string) => url.replace('vrchat.com', 'vrc.icewind.me');
@@ -33,12 +34,18 @@ class App extends React.Component<{}, AppState> {
     onCredentials(credentials: Credentials) {
         if (!this.state.api) {
             const api = new Api(credentials, crossHandler);
-            this.setState({api});
-            api.getFriendStatus(inviteBotUserId).then(({isFriend, outgoingRequest}) => {
-                if (!(isFriend || outgoingRequest)) {
-                    api.sendFriendRequest(inviteBotUserId);
+            api.getFriendStatus(inviteBotUserId).then(
+                ({isFriend, outgoingRequest}) => {
+                    this.setState({api});
+                    if (!(isFriend || outgoingRequest)) {
+                        api.sendFriendRequest(inviteBotUserId);
+                    }
+                },
+                (error) => {
+                    console.log(error);
+                    this.setState({error: 'Error while logging in'});
                 }
-            });
+            );
         }
     }
 
@@ -51,6 +58,7 @@ class App extends React.Component<{}, AppState> {
         if (!this.state.api) {
             return (
                 <LoginPage
+                    error={this.state.error}
                     onCredentials={credentials => {
                         this.onCredentials(credentials);
                         sessionStorage.setItem('credentials', JSON.stringify(credentials));

@@ -1,0 +1,10 @@
+form.message {
+    text-align: left;
+    margin: 10px;
+}
+
+form.message textarea {
+    width: 500px;
+    max-width: 90%;
+    height: 150px;
+}
