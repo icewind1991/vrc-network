@@ -11,6 +11,7 @@ import { CurrentUser } from './CurrentUser';
 import { BlockListPage } from './BlockListPage';
 import { UserPage } from './UserPage';
 import { FavoritesPage } from './FavoritesPage';
+import { BlockedByListPage } from './BlockedByListPage';
 
 export interface AppState {
     api?: Api;
@@ -91,6 +92,10 @@ class App extends React.Component<{}, AppState> {
                             <Route
                                 path="/blocked"
                                 component={() => <BlockListPage api={api}/>}
+                            />
+                            <Route
+                                path="/blocked_by"
+                                component={() => <BlockedByListPage api={api}/>}
                             />
                             <Route
                                 path="/favorites"

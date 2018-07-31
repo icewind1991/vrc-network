@@ -30,6 +30,7 @@ class CurrentUserDropDown extends React.Component<CurrentUserDropDownProps, Curr
                 {this.state.expanded ?
                     <span className="dropdown">
                         <Link to="/blocked">Block list</Link>
+                        <Link to="/blocked_by">Block by list</Link>
                         <Link to="/favorites">Favorite list</Link>
                         <a
                             href="#"
