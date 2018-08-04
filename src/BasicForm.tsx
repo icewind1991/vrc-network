@@ -6,7 +6,7 @@ export interface FormResult {
 
 export type OnSubmitCallBack = (data: FormResult) => void;
 
-function saveInput<T>(onSubmit: OnSubmitCallBack, e: React.FormEvent<HTMLFormElement>) {
+function saveInput<T>(onSubmit: OnSubmitCallBack, clearOnSubmit: boolean, e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
 
@@ -15,6 +15,9 @@ function saveInput<T>(onSubmit: OnSubmitCallBack, e: React.FormEvent<HTMLFormEle
         (newData: FormResult, element: HTMLInputElement) => {
             if (element.name) {
                 newData[element.name] = element.value;
+                if (clearOnSubmit) {
+                    element.value = '';
+                }
             }
             return newData;
         },
@@ -27,12 +30,13 @@ function saveInput<T>(onSubmit: OnSubmitCallBack, e: React.FormEvent<HTMLFormEle
 export interface BasicFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
     children: React.ReactNode;
     onData: OnSubmitCallBack;
+    clearOnSubmit?: boolean;
 }
 
-export function BasicForm({children, onData, ...rest}: BasicFormProps) {
+export function BasicForm({children, onData, clearOnSubmit = true, ...rest}: BasicFormProps) {
     return (
         <form
-            onSubmit={saveInput.bind(null, onData)}
+            onSubmit={saveInput.bind(null, onData, clearOnSubmit)}
             {...rest}
         >
             {children}

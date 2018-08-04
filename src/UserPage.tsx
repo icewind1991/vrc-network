@@ -20,7 +20,11 @@ export function UserPage({userId, api}: UserPageProps) {
                 <UserView user={user} api={api}/>
                 <BasicForm
                     className="message"
-                    onData={({text}: { text: string }) => api.sendNotification(userId, 'message', text, '')}
+                    onData={({text}: { text: string }) => {
+                        if (text) {
+                            api.sendNotification(userId, 'message', text, '');
+                        }
+                    }}
                 >
                     <p>
                         <textarea name="text" placeholder="Send message"/>
