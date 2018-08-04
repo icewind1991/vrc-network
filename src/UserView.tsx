@@ -14,7 +14,7 @@ export function UserView({user, api}: { user: User, api: Api }) {
                     <img src={user.avatar.thumbnail}/>
                 </td>
                 <td>
-                    <Link to={`users/${user.id}`}>
+                    <Link to={`/users/${user.id}`}>
                         {user.displayName}
                     </Link>
                 </td>
