@@ -18,7 +18,7 @@ export interface AppState {
     error?: string;
 }
 
-const crossHandler = (url: string) => url.replace('vrchat.com', 'vrc.icewind.me');
+const crossHandler = (url: string) => url.replace('vrchat.com', 'api.vrchat.network');
 
 const inviteBotUserId = 'usr_bb198672-68fd-4533-bf2e-d5d37817a995';
 
